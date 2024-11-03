@@ -2,7 +2,7 @@ import css from "./Options.module.css";
 
 export default function Options({ update, totalFeedback }) {
   return (
-    <div>
+    <div className={css.buttons}>
       <button onClick={() => update("good")}>Good</button>
       <button onClick={() => update("neutral")}>Neutral</button>
       <button onClick={() => update("bad")}>Bad</button>
