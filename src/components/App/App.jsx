@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Description from "../Description/Description";
 import Options from "../Options/Options";
 import Feedback from "../Feedback/Feedback";
+import Notification from "../Notification/Notification";
 
 export default function App() {
   const defaultValues = {
@@ -45,9 +46,13 @@ export default function App() {
       <Description />
       <Options update={update} totalFeedback={values.total} />
 
-      {values.total === 0 && <p>No feedback yet</p>}
+      {values.total === 0 && <Notification />}
       {values.total > 0 && (
-        <Feedback values={values} totalFeedback={values.total} />
+        <Feedback
+          values={values}
+          totalFeedback={values.total}
+          positiveFeedback={Math.round((values.good / values.total) * 100)}
+        />
       )}
     </>
   );
